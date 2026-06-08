@@ -9,6 +9,7 @@
     "start": "next start -p 3000",
     "db:push": "prisma db push --skip-generate",
     "db:generate": "prisma generate",
+    "db:migrate:deploy": "prisma migrate deploy",
     "db:seed": "prisma db seed",
     "postinstall": "prisma generate",
     "lint": "tsc --noEmit"

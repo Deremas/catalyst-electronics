@@ -4,13 +4,12 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
 }
 
 model Location {
   id        String   @id @default(cuid())
   name      String
-  type      String // STORE, SHOP, WAREHOUSE
+  type      String // STORE, SHOP
   location  String?
   phone     String?
   isActive  Boolean  @default(true)
