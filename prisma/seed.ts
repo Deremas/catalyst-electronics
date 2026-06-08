@@ -1,13 +1,16 @@
-import { Prisma, PrismaClient } from "@prisma/client";
+import "dotenv/config";
+import { Prisma, PrismaClient } from "../lib/generated/prisma/client";
 import { PrismaPg } from "@prisma/adapter-pg";
 import bcrypt from "bcryptjs";
 import { PERMISSION_CATALOG } from "../lib/permission-catalog";
 
-const adapter = new PrismaPg(process.env.DATABASE_URL!);
+const adapter = new PrismaPg({
+  connectionString: process.env.DATABASE_URL!,
+});
 
 const prisma = new PrismaClient({
   adapter,
-} as Prisma.PrismaClientOptions);
+});
 
 const SUPER_ADMIN_ROLE = "Super Admin";
 const LEGACY_ADMIN_ROLES = ["Administrator", "ADMIN"] as const;
