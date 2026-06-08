@@ -10,12 +10,12 @@
     "db:push": "prisma db push --skip-generate",
     "db:generate": "prisma generate",
     "db:migrate:deploy": "prisma migrate deploy",
-    "db:seed": "prisma db seed",
+    "db:seed": "node --import tsx prisma/seed.ts",
     "postinstall": "prisma generate --schema=\"$INIT_CWD/prisma/schema.prisma\"",
     "lint": "tsc --noEmit"
   },
   "prisma": {
-    "seed": "tsx prisma/seed.ts"
+    "seed": "node --import tsx prisma/seed.ts"
   },
   "dependencies": {
     "@prisma/adapter-pg": "^7.8.0",
