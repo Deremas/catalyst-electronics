@@ -1,8 +1,13 @@
 import { Prisma, PrismaClient } from "@prisma/client";
+import { PrismaPg } from "@prisma/adapter-pg";
 import bcrypt from "bcryptjs";
 import { PERMISSION_CATALOG } from "../lib/permission-catalog";
 
-const prisma = new PrismaClient();
+const adapter = new PrismaPg(process.env.DATABASE_URL!);
+
+const prisma = new PrismaClient({
+  adapter,
+} as Prisma.PrismaClientOptions);
 
 const SUPER_ADMIN_ROLE = "Super Admin";
 const LEGACY_ADMIN_ROLES = ["Administrator", "ADMIN"] as const;
